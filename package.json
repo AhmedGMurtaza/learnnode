@@ -9,6 +9,8 @@
   "author": "ahmed murtaza",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nodemon": "^1.14.12",
+    "pug": "^2.0.0-rc.4"
   }
 }
