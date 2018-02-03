@@ -11,7 +11,15 @@ app.set('view engine','pug');
 
 // home route
 app.get('/',function(req,res){
-    res.render('index');
+    res.render('index',{
+        title: 'Node + Express lesson'
+    });
+})
+
+app.get('/articles/add',function(req,res){
+    res.render('add_article',{
+        heading:'Add article'
+    })
 })
 
 app.listen('3000',function(){
