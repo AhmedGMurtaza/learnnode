@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 //mongoose let us connect with mongodb  
 const mongoose = require('mongoose'); 
 
@@ -24,6 +25,12 @@ const app = express();
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
+// Body parser Middleware
+// it will be used to parse request body
+app.use(bodyParser.urlencoded({extended:false}));
+// parse application/json
+app.use(bodyParser.json());
+
 // Injecting Models
 let Article = require('./models/article');
 
@@ -45,6 +52,24 @@ app.get('/',function(req,res){
 app.get('/articles/add',function(req,res){
     res.render('add_article',{
         heading:'Add Article'
+    })
+})
+
+// Add submit POST route
+app.post('/articles/add',function(req,res){
+    let article = new Article();
+    article.title = req.body.title;
+    article.body = req.body.body;
+    article.tag = req.body.tag;
+    article.save(function(err){
+        if(!err){
+            res.redirect('/');
+            console.log('redirected!');
+        }
+        else{
+            console.log(err);
+            return;
+        }
     })
 })
 

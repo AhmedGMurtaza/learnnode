@@ -2,6 +2,10 @@ extends layout
 
 block content
     h1 #{heading}
-    ul
+    dl
          each article, i in articles
-            li= article.title
+            dt
+                h3= article.title
+            dd
+                p=article.body
+                span(style="border:1px solid #000000;")=article.tag
