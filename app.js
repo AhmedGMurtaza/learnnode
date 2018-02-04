@@ -11,14 +11,36 @@ app.set('view engine','pug');
 
 // home route
 app.get('/',function(req,res){
+    let articles = [
+        {
+            id:1,
+            title:'helo world',
+            author:'ahmedmurtaza',
+            body:'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum '
+        },
+        {
+            id:1,
+            title:'helo world',
+            author:'ahmedmurtaza',
+            body:'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum '
+        },
+        {
+            id:1,
+            title:'helo world',
+            author:'ahmedmurtaza',
+            body:'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum '
+        }
+    ]
     res.render('index',{
-        title: 'Node + Express lesson'
+        title:'Node + Express lesson',
+        heading: 'Articles',
+        articles
     });
 })
 
 app.get('/articles/add',function(req,res){
     res.render('add_article',{
-        heading:'Add article'
+        heading:'Add Article'
     })
 })
 
