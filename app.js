@@ -31,6 +31,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 // parse application/json
 app.use(bodyParser.json());
 
+//for statc pages (non templates/non rendered)
+app.use(express.static(path.join(__dirname,'public')))
+
 // Injecting Models
 let Article = require('./models/article');
 
