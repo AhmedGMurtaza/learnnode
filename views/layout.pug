@@ -2,9 +2,20 @@ doctype html
 html
     head
         title #{title}
-    body    
-        block content
-        br
-        hr
-        footer
-            p copyright copy; 2017.
+        link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet')
+    body 
+
+        ul.nav.nav-pills
+            li
+                a(href='/') Home
+            li
+                a(href='/articles/add') Add article
+
+        .container
+            block content
+            br
+            hr           
+            footer
+                p copyright copy; 2017.
+        script(src='/bower_components/bootstrap/dist/js/jquery.min.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')

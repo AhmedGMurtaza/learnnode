@@ -58,12 +58,22 @@ app.get('/articles/add',function(req,res){
     })
 })
 
+// get single article
+app.get('/article/:id',function(req,res){
+    Article.findById(req.params.id,function(err,article){
+        console.log(article)
+        res.render('article',{
+            article:article
+        })
+    })
+})
+
 // Add submit POST route
 app.post('/articles/add',function(req,res){
     let article = new Article();
     article.title = req.body.title;
     article.body = req.body.body;
-    article.tag = req.body.tag;
+    article.author = req.body.author;
     article.save(function(err){
         if(!err){
             res.redirect('/');

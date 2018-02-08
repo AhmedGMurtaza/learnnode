@@ -6,9 +6,9 @@ let articleSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    tag:{
+    author:{
         type:Array,
-        required:false
+        required:true
     },
     body:{
         type:String,
