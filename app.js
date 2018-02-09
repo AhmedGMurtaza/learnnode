@@ -61,9 +61,18 @@ app.get('/articles/add',function(req,res){
 // get single article
 app.get('/article/:id',function(req,res){
     Article.findById(req.params.id,function(err,article){
-        console.log(article)
         res.render('article',{
             article:article
+        })
+    }) 
+})
+
+// edit article route
+app.get('/article/edit/:id',function(req,res){
+    Article.findById(req.params.id,function(err,article){
+        res.render('edit_article',{
+            article:article,
+            heading:'Edit'
         })
     })
 })

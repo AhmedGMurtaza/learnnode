@@ -7,7 +7,7 @@ let articleSchema = mongoose.Schema({
         required:true
     },
     author:{
-        type:Array,
+        type:String,
         required:true
     },
     body:{
