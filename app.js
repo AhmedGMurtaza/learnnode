@@ -59,7 +59,7 @@ app.get('/articles/add',function(req,res){
 })
 
 // get single article
-app.get('/article/:id',function(req,res){
+app.get('/articles/:id',function(req,res){
     Article.findById(req.params.id,function(err,article){
         res.render('article',{
             article:article
@@ -68,12 +68,43 @@ app.get('/article/:id',function(req,res){
 })
 
 // edit article route
-app.get('/article/edit/:id',function(req,res){
+app.get('/articles/edit/:id',function(req,res){
     Article.findById(req.params.id,function(err,article){
         res.render('edit_article',{
             article:article,
             heading:'Edit'
         })
+    })
+})
+
+// Update submit POST route
+app.post('/articles/edit/:id', function (req, res) {
+    let article = {};
+    article.title = req.body.title;
+    article.body = req.body.body;
+    article.author = req.body.author;
+    
+    let query = {_id:req.params.id};
+    
+    Article.update(query,article,function (err) {
+        if (!err) {
+            res.redirect('/');
+            console.log('redirected!');
+        }
+        else {
+            console.log(err);
+            return;
+        }
+    })
+})
+
+app.delete('/articles/:id',function(req,res){
+    let query = {_id:req.params.id};
+    Article.remove(query,function(err){
+        if(err){
+            console.log('error in route')
+        }
+        res.send('success!!!')
     })
 })
 

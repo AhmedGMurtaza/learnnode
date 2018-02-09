@@ -2,7 +2,7 @@ extends layout
 
 block content
     h2 #{heading}
-    form(method='POST', action='/article/edit/'+article._id)
+    form(method='POST', action='/articles/edit/'+article._id)
         #form-group
             label Title:
             input.form-control(name='title', type='text', value=article.title)
@@ -12,4 +12,5 @@ block content
         #form-group
             label author:
             input.form-control(name='author', type='text',value=article.author)
+        br
         input.btn.btn-primary(type='submit',value='submit')             
